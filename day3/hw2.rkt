@@ -25,7 +25,7 @@
          [(eq? (first x) 'NEQ)  (not (eq? (calculate(second x)) (calculate(third x))))]
          [(eq? (first x) 'ANND)  (and (calculate(second x)) (calculate(third x)))]
          [(eq? (first x) 'ORR)  (or (calculate(second x)) (calculate(third x)))]
-         [(eq? (first x) 'NOTT)  (not (calculate(second x)) (calculate(third x)))]
+         [(eq? (first x) 'NOTT)  (not (calculate(second x)))]
          [(eq? (first x) 'IPH) (if (calculate(second x)) (calculate (third x)) (calculate(fourth x)) )]
          )
   ))

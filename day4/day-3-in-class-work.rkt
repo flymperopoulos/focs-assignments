@@ -7,6 +7,27 @@
 ;; 0.  Implement factorial both recursively and tail recursively.
 ;;     Hint:  The tail recursive version will use a helper function.
 
+;; factorial
+(define (factorial n)
+  (if (= n 0)
+      1
+      (* n (factorial (- n 1)))) 
+  )
+
+(display (factorial 3)) (newline)
+
+;; factoial tail optimization
+(define (factorial-main n)
+  (factorial-helper n 1)
+  )
+
+(define (factorial-helper num prod)
+  (if (= num 1)
+      prod
+      (factorial-helper (- num 1) (* num prod)))
+  )
+
+(display (factorial-main 3)) (newline)
 
 ;;;;;;;;;;;
 ;; 1.  Filter is built in to scheme.
@@ -18,7 +39,14 @@
 
 ;; Implement it anyway.  You might want to call it my-filter?  What arguments does it take?
 
+(define (my-filter op lst)
+  (cond ((null? lst) null)
+        ((op (first lst)) (cons (first lst) (my-filter op (rest lst))))
+        (else (my-filter op (rest lst)))
+        )
+  )
 
+(display (my-filter even? '(1 2 3 4 5 6))) (newline)
 
 
 
@@ -35,10 +63,15 @@
 
 ;; Implement it as well.  You might want to call it my-map.  What arguments does it take?
 
+(define (double x) (* 2 x))
 
+(define (my-map op lst)
+  (if (null? lst) null
+        (cons (op (first lst)) (my-map op (rest lst)))
+  )
+)
 
-
-
+(display (my-map double '(1 2 3))) (newline)
 
 
 ;;;;;;;;;;;
@@ -52,7 +85,14 @@
 ;; as well as for the new list.  Confirm with a member of the instructional staff....
 
 
+(define (my-append lst1 lst2)
+  (if (null? lst1)
+      lst2
+      (cons (first lst1) (my-append (rest lst1) lst2))
+  )
+)
 
+(display (my-append '(1 2 3) '(4 5 6))) (newline)
 
 
 ;;;;;;;;;;;
@@ -63,7 +103,14 @@
 
 ;; Implement `zip`.
 
+(define (my-zip lst1 lst2)
+  (if (or (null? lst1) (null? lst2))
+      '()
+      (cons (list (first lst1) (first lst2)) (my-zip (rest lst1) (rest lst2)))
+      )
+)
 
+(display (my-zip '(1 2 6 7) '(4 5 4 5 2))) (newline)
 
 
 ;;;;;;;;;;;;
@@ -72,14 +119,48 @@
 
 ;; (reverse '(1 2 3)) --> '(3 2 1)
 
+(define (my-reverse lst)
+  (if (null? lst)
+      lst
+      (my-append (my-reverse (cdr lst)) (list (car lst)))
+  ))
+    
+(display (my-reverse '(3 4 6))) (newline)
 
 
 ;;;;;;;;;;;;
 ;; More puzzles:
 ;;
 ;;  - (count elt lst) returns the number of times that elt appears in lst
+
+(define (count input lst)
+  (if (null? lst)
+      0
+      (if (eq? input (first lst))
+          (+ 1 (count input (rest lst)))
+          (count input (rest lst)))
+      )
+  )
+
+(display (count 'elt '(elt 4 3 ee elt elt))) (newline) ;;--> 3
+
 ;;  - (remove-dups lst) returns a new list that contains the elements of lst but without repeats
 ;;       (remove-dups '(1 2 3 1 4 5 2 4 6)) --> '(1 2 3 4 5 6)
+
+(define (remove-helper input lst)
+  (if (null? lst)
+      input
+      (if (eq? input (remove-helper (first lst) (rest lst)))
+          '()
+          (my-append input (remove-helper (first lst) (rest lst)))
+  )))
+
+(define (remove-dups lst)
+  remove-helper (first lst) (rest lst)
+  )
+
+(display (remove-dups '(elt 4 3 ee 3 elt elt))) (newline) ;;--> (elt 4 3 ee)
+
 ;;  - reverse reverses a list, but doesn't reverse sublists in a tree.  (Try it and see.)
 ;;    Write deep-reverse, which reverses all sublists as well.
 ;;  - Which of these can you implement using tail recursion?

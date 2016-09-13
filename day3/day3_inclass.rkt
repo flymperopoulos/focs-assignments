@@ -115,7 +115,19 @@
 (display (count 'elt '(elt 4 3 ee elt elt))) (newline) ;;--> 3
 
 ;; remove duplicates
+(define (remove-helper input lst)
+  (if (null? lst)
+      input
+      (if (eq? input (remove-helper (first lst) (rest lst)))
+          '()
+          (my-append input (remove-helper (first lst) (rest lst)))
+  )))
+
+(define (remove-dups lst)
+  remove-helper (first lst) (rest lst)
+  )
+
+(display (remove-dups '(elt 4 3 ee 3 elt elt))) (newline) ;;--> (elt 4 3 ee)
 
 ;; reverse but not reverse the sublists
 
-;;(display (remove-dups '(elt 4 3 ee elt elt))) (newline) ;;--> (elt 4 3 ee)

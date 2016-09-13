@@ -19,13 +19,13 @@
 (display (length '(1 2 3 4 2))) (newline) ;; --> 5
 
 ;; absolute value of all members
-;;(define (abs lst)
-;;  (if (null? lst)
-;;      ()
-;;      (cons (abs-val (car lst)) (abs (cdr lst))))
-;;  )
+(define (abs-val lst)
+  (if (null? lst)
+      '()
+      (cons (abs (car lst)) (abs-val (cdr lst))))
+  )
 
-;;(display (abs '(1 -22 3 -4 2))) (newline) ;; --> (1 22 3 4 2)
+(display (abs-val '(1 -22 3 -4 2))) (newline) ;; --> (1 22 3 4 2)
 
 ;; sum of members on a list
 (define (sum-of-mem lst)
@@ -115,12 +115,6 @@
 
 ;; tree-max-width
 
-;;bigger helper
-(define (bigger a b)
-  (if (> a b)
-      a
-      b)
-  )
 
 ;;max-width function
 

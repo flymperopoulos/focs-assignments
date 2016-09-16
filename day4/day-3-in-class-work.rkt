@@ -147,20 +147,9 @@
 ;;  - (remove-dups lst) returns a new list that contains the elements of lst but without repeats
 ;;       (remove-dups '(1 2 3 1 4 5 2 4 6)) --> '(1 2 3 4 5 6)
 
-(define (remove-helper input lst)
-  (if (null? lst)
-      input
-      (if (eq? input (remove-helper (first lst) (rest lst)))
-          '()
-          (my-append input (remove-helper (first lst) (rest lst)))
-  )))
-
-(define (remove-dups lst)
-  remove-helper (first lst) (rest lst)
-  )
-
-(display (remove-dups '(elt 4 3 ee 3 elt elt))) (newline) ;;--> (elt 4 3 ee)
+;;(display (remove-dups '(elt 4 3 ee 3 elt elt))) (newline) ;;--> (elt 4 3 ee)
 
 ;;  - reverse reverses a list, but doesn't reverse sublists in a tree.  (Try it and see.)
+
 ;;    Write deep-reverse, which reverses all sublists as well.
 ;;  - Which of these can you implement using tail recursion?

@@ -70,7 +70,7 @@
           (repl (append lookup-list (list (list (second input) (third input)))))
       )
       (if (LAMBDA? input)
-          (list 'lambda (second input) (third input) lookup-list)
+          (list 'LAMBDA (second input) (third input) lookup-list)
           (if (list? input)
               (
                (second (assq (first input) lookup-list))
@@ -97,3 +97,27 @@
   (repl operator-list))
 
 (run-repl)
+
+;; CALCULATOR TESTS
+
+;; MATH
+;;mini-eval>> (ADD 3 (MUL 4 5))
+;;23
+;;mini-eval>> (SUB (ADD 3 4) (MUL 5 6))
+;;-23
+;;mini-eval>> (ANND (GT (ADD 3 4) (MUL 5 6)) (LE (ADD 3 (MUL 4 5)) (SUB 0 (SUB (ADD 3 4) (MUL 5 6)))))
+;;#f
+
+;; DEFINE
+
+;;mini-eval>> (ADD 3 (MUL 4 5)))
+;;23
+;;mini-eval>> (DEFINE x (ADD 1 2)) 
+;;mini-eval>> (SUB 10 x)
+;;7
+;;mini-eval>> x
+;;3
+;;mini-eval>> (DEFINE x 4)
+;;4
+
+;; LAMBDA

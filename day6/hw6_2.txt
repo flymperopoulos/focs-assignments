@@ -1,0 +1,10 @@
+The states in the DFA are {q0, q1, q2, q3, q4}.
+
+The respective transition table can be seen below:
+
+	 0 	 1
+q0  q0	q1
+q1  q2	q0
+q2  q0  q3
+q3  q0  q4
+q4  q4  q4

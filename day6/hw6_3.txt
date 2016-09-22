@@ -1,0 +1,6 @@
+Such a machine would not be more powerful. This holds
+because we can express any letter in the {a, b, c, ..., z} alphabet 
+in binary form and, therefore, the {0,1} alphabet, with 5 digits. In other words, 
+a would be 00001, b would be equal to 00010 and so on until z (the equivalent of 26) is 11010.
+As a result, we would be able to construct an NFA (or DFA, if you have time to mess around)
+that would undestand both languages.

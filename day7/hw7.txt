@@ -8,8 +8,8 @@ L=(
 R=)
 
 (a) (LR)*
-(b) (LR)*(L(LR)*R)*(LR)*
-(c) (LR)*(L((LR)*(L(LR)*R)*(LR)*)R)*(LR)*
+(b) (L(LR)*R)*
+(c) (L(L(LR)*R)*R)*
 
 3. 
 (a) 1(11)*

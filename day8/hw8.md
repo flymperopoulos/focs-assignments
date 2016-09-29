@@ -28,6 +28,8 @@ c) All strings (over {0,1}) consisting of a substring _w_ followed by the revers
 
 [The strings `00100100` and `11110101011010101111` are in this language; the strings `00100` and `010101 `are not.]
 
+Answers: File question1.png in the same directory.
+
 ## 2. Play the pumping game
 
 Play the **pumping game** (referenced on the [Day 8 page](https://sites.google.com/site/focs16fall/in-class-exercises/day-8) and also found at [http://weitz.de/pump/](http://weitz.de/pump/)).  Solve at least two puzzles from that page (that do NOT appear in question 1, above) and provide the word you chose, the substring the computer chose, and your successfully pumped string.
@@ -38,6 +40,17 @@ Notation notes:
 - _a_^_n_ means _n_ occurrences of `a` (e.g. _a_^8 is `aaaaaaaa`)
 
 If you have other questions about notation (or anything else), please post them to [Piazza](https://piazza.com) so that we can clarify for everyone.
+
+Answers:
+- Exercise 17: Language is regular (a^n, where n is odd)
+- Exercise 1: 
+word chosen --> "aaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbb" (a23b24)
+substring --> "aaaaaaaaaa" 
+pumped --> "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbb"
+- Exercise 12: 
+word chosen --> "aaaaaaaaaaaaaaaaaaaaaaaaaaaaabababababababababababababab" a28(ab)14
+substring --> "abababababababababababababab"
+pumped --> "aaaaaaaaaaaaaaaaaaaaaaaaaaaaababababababababababababababababab"
 
 ## 3. Create a PDA
 

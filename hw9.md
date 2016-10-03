@@ -22,7 +22,7 @@ Construct a Context Free Grammar for each of the following languages.
 
 a) All strings (over {0,1}) consisting of a substring _w_ followed by its reverse. (This is the same problem you were asked to work on in class.)
 
-S --> epsilon|0|1|0S0|1S1
+S --> epsilon|0S0|1S1
 
 Give a derivation for `010010`.
 

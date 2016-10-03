@@ -56,18 +56,18 @@ two:
 
 a. parse trees
 
-S --> aS --> aaSbS --> aab 
-S --> aSbS --> aaSbS --> aab
+S --> aS --> aaSbS --> aab  
+S --> aSbS --> aaSbS --> aab  
 
 b. leftmost derivations (These are the ones that, starting from the start variable, rewrite the leftmost nonterminal first.)
 
-S --> aS --> aaSbS --> aabS --> aab
-S --> aSbS --> aaSbS --> aabS --> aab
+S --> aS --> aaSbS --> aabS --> aab  
+S --> aSbS --> aaSbS --> aabS --> aab  
 
 c. rightmost derivations (These are the ones that, starting from the start variable, rewrite the rightmost nonterminal first.)
 
-S --> aS --> aaSbS --> aaSb --> aab
-S --> aSbS --> aSb --> aaSb --> aab
+S --> aS --> aaSbS --> aaSb --> aab  
+S --> aSbS --> aSb --> aaSb --> aab  
 
 Extra Credit/Challenge: Prove that this grammar generates all and only the strings of `a`s and `b`s such that every prefix has at least as many `a`s as `b`s. **Hint: Do the readings!**
 

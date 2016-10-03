@@ -30,20 +30,20 @@ S --> 0S0 --> 01S10 --> 010S010 --> 010(epsilon)010 ---> 010010
 
 b) All strings (over {a,b,c}) of the form a^{i}b^{i}c^{j}: an equal number of `a`s and `b`s, followed by any number of `c`s. For example, `aabb`, `aabbcc`, and `aabbcccc`, but not `aaaabbcc`.
 
-S --> aSb | epsilon
-C --> cC | epsilon
-T --> SC
+S --> aSb | epsilon  
+C --> cC | epsilon  
+T --> SC  
 
 c) All strings (over {a,b,c}) of the form a^{i}b^{j}c^{j}: any number of `a`s, followed by an equal number of `b`s and `c`s. For example, `abbcc`, `aabbcc`, and `aaaabbcc`, but not `aabbccc`.
 
-A --> aA | epsilon
-S --> bSc | epsilon
-F --> AS
+A --> aA | epsilon  
+S --> bSc | epsilon  
+F --> AS  
 
 d) Give two distinct grammars that produce the strings described by the regular expression `(ab)*`: empty, `ab`, `abab`, `ababab`, ….
 
-S --> abS | epsilon
-N --> Nab | epsilon
+S --> abS | epsilon  
+N --> Nab | epsilon  
 
 ## 4. Ambiguous Grammars
 

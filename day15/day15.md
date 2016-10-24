@@ -6,9 +6,9 @@ You may edit your answers into this file, or add a separate file in the same dir
 If you add a separate file, please include the following at the top:
 
 ```
-Student Name: Frankly Olin [change to your name]
+Student Name: Filippos Lymperopoulos
 Check one:
-[ ] I completed this assignment without assistance or external resources.
+[*] I completed this assignment without assistance or external resources.
 [ ] I completed this assignment with assistance from ___
    and/or using these external resources: ___
 ```
@@ -31,7 +31,7 @@ What inequalities must hold in each of these trees?
     T1     T2
 ```
 
-Ans:  all elements of TI <= x <= all elements of T2
+Ans:  all elements of TI <= a <= all elements of T2
 
 ### 1.
 ```
@@ -44,7 +44,7 @@ Ans:  all elements of TI <= x <= all elements of T2
  T1    T2
 ```
 
-Ans:  
+Ans:  T1 < c <= T2 < b <= T3
 
 
 
@@ -59,7 +59,7 @@ Ans:
        T2    T3
 ```
 
-Ans:  
+Ans:  T1 < d <= T2 < e <= T3 
 
 
 
@@ -77,7 +77,7 @@ Ans:
     T2     T3
 ```
 
-Ans:  
+Ans:  T1 < g < T2 < h <= T3 < f <= T4
 
 
 
@@ -87,18 +87,57 @@ Ans:
 
 What other tree structures containing three internal nodes -- x, y, and z -- can exist?  Draw these and describe the inequalities that exist among the internal nodes and their subtrees.  
 [Hint:  There should be four more shapes.]  
-The relationship among x, y, and z doesn't matter.  For convenience, we've arbitrarily labeled them top to bottom and the subtrees left to right.
+The relationship among x, y, and z doesn't matter.  For convenience, we've arbitrarily labeled them top to bottom and the subtrees left to right.  
 
 
+```
+        x
+       / 
+      /   
+     y     
+    / 
+   /   
+ z    
+```
 
+Relationship: z < y < x
 
+```
+        x
+       / 
+      /   
+     y     
+      \
+       \
+        z
+   
+```
+  
+Relationship: y <= z < x
 
+```
+      x
+       \ 
+        \   
+         y     
+        / 
+       /   
+      z    
+```
+  
+Relationship: z < y <= x
 
-<expand as needed>
-
-
-
-
+```
+    x
+     \ 
+      \   
+       y     
+        \ 
+         \   
+          z    
+```
+  
+Relationship: y <= z <= x
 
 ## III.  Observing balance
 
@@ -109,7 +148,11 @@ For EVERY internal node (x and y), the depth of the internal node's left subtree
 
 ### 5. 
 
-Does this property hold for any of the three-internal-node trees?  Which ones?  Which ones are NOT almost-balanced?  (We call these unbalanced.)
+Does this property hold for any of the three-internal-node trees?  Which ones?  Which ones are NOT almost-balanced?  (We call these unbalanced.)  
+
+```
+Trees 1,2 are almost-balanced. Tree 3 is unbalanced, as subtrees T4 and T2 (or T3) start at a 2 height depth difference.
+```
 
 
 ## IV.  Maintaining balance
@@ -123,9 +166,34 @@ If you are given a binary tree of the form in question 1, you can transform them
 ### 6. 
 
 Use this insight to show how to modify each of the unbalanced tree forms with three internal nodes into an almost-balanced tree that preserves the binary search property.
+  
+Taking tree from question 3 we can perform some manipulations to make it balanced.
 
+```
+        f                    
+       / \
+      /   \
+     g     T4      
+    / \ 
+   /   \           
+ T1     h
+       / \
+      /   \
+    T2     T3
+```
 
+We can re-arrange the tree by bringing the h element as the root of the tree, as shown below.
 
+```
+         h                    
+       /   \
+      /     \
+     g       f      
+    / \     / \
+   /   \   /   \                 
+  T1   T2 T3   T4
+
+```
 
 ## V.  Rebalancing
 
@@ -151,20 +219,90 @@ For EVERY internal node (x and y), the depth of the internal node's left subtree
                  18
 ```
 
+Almost-balanced. Since,
 
+@8: 3 - 4
+@6: 2 - 1
+@14: 2 - 3
+@3: 1 - 1
+@7: 0 - 0
+@2: 0 - 0
+@5: 0 - 0
+@10: 0 - 0
+@12: 1 - 0
+@16: 1 - 2
+@15: 0 - 0
+@20: 1 - 0
+@18: 0 - 0
 
 ### 8. 
 
 Insert the value 13 into this tree.  Where does it go?  Is the resulting tree almost-balanced?  If not, see #11.
 
+```
+          8
+        /   \
+       /     \
+      6       14
+     /\       / \  
+    /  \     /   \ 
+   3   7    12    16  
+  /\        / \    /\ 
+ /  \      /   \  /  \ 
+2    5    10   13 15   20
+                      /
+                     /
+                    18
+```
+
+Still, almost-balanced.
 
 ### 9. 
 
 Insert the value 17 into the tree.  Where does it go?  Is the resulting tree almost-balanced?  If not, see #11.
+  
+We would put it as a left child to the parent 18, which would result in a not-balanced tree. Hence, rebalanced is seen below:
+
+```
+          8
+        /   \
+       /     \
+      6       14
+     /\       / \  
+    /  \     /   \ 
+   3   7    12    16  
+  /\        / \    /\ 
+ /  \      /   \  /  \ 
+2    5    10   13 15  18
+                      /\
+                     /  \
+                    17  20
+```
+
+Still, almost-balanced.
 
 ### 10. 
 
 Insert the value 4 into the tree.  Where does it go?  Is the resulting tree almost-balanced?  If not, see #11.
+
+
+```
+            8
+        /       \
+       /         \
+      5           14
+     /\          /  \  
+    /  \        /    \ 
+   3    6      12    16  
+  / \    \     / \    /\ 
+ /   \    \   /   \  /  \ 
+2     4    7 10   13 15 20
+                     /
+                    /
+                   18
+```
+
+Still, almost-balanced.
 
 
 ### 11. 
@@ -175,12 +313,6 @@ Use the work you've done above to rebalance the tree.  Start at the newly insert
 ### 12. 
 
 [Challenge] Assuming that a tree is almost-balanced when you make an insertion, and that that insertion may violate the almost-balanced property, can almost-balance always be restored solely by climbing the  path from the newly inserted node to the root?  Will you ever have to descend another branch?  Why or why not?
-
-
-
-
-
-
 
 
 
